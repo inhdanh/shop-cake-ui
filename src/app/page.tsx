@@ -4,8 +4,14 @@ import useComponentVisible from '@/hooks/useComponentVisible'
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 
 const menuItems = [
-  { text: 'Designer Cakes', path: 'designer-cake' },
-  { text: 'Birthday Cakes', subMenu: [{ text: 'Cake 1', path: 'cake-1' }] },
+  { title: 'Designer Cakes', path: 'designer-cake' },
+  {
+    title: 'Birthday Cakes',
+    children: {
+      title: 'Birthday Cakes',
+      data: [{ title: 'Cake 1', path: 'cake-1' }],
+    },
+  },
 ]
 
 export default function Home() {

@@ -6,13 +6,23 @@ interface PropTypes {
 }
 
 interface MenuItem {
-  text: string
+  title: string
   path?: string
-  subMenu?: MenuItem[]
+  children?: {
+    title: string
+    data: MenuItem[]
+  }
+}
+
+interface History {
+  data: MenuItem[]
+  title?: string
 }
 
 export default function MobileNav(props: PropTypes) {
-  const [currentMenu, setCurrentMenu] = useState<MenuItem[]>(props.menuItems)
+  const [history, setHistory] = useState<History[]>([{ data: props.menuItems }])
+  const current = history[history.length - 1]
+
   return (
     <div
       className={`
@@ -28,14 +38,27 @@ export default function MobileNav(props: PropTypes) {
         ${props.isVisible ? 'translate-x-0' : '-translate-x-full'}`}
     >
       <ul>
-        {currentMenu.map((item) => (
+        {history.length > 1 && (
+          <li
+            onClick={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
+          >
+            Back ({current.title})
+          </li>
+        )}
+        {current.data.map((item) => (
           <li
             key={crypto.randomUUID()}
             onClick={
-              item.subMenu ? () => setCurrentMenu(item.subMenu || []) : () => {}
+              item.children
+                ? () =>
+                    setHistory((prev) => [
+                      ...prev,
+                      item.children || { data: [] },
+                    ])
+                : undefined
             }
           >
-            {item.text}
+            {item.title}
           </li>
         ))}
       </ul>
