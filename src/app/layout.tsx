@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Work_Sans } from 'next/font/google'
+import GlobalContextProvider from '../contexts'
 
 const workSans = Work_Sans({
   subsets: ['latin', 'vietnamese'],
@@ -18,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={workSans.className}>{children}</body>
+      <body className={workSans.className}>
+        <GlobalContextProvider>{children}</GlobalContextProvider>
+      </body>
     </html>
   )
 }
