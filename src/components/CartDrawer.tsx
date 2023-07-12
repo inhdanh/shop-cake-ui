@@ -1,6 +1,5 @@
 import { useCartDrawerContext } from '@/contexts/cartDrawer'
-import useComponentVisible from '@/hooks/useComponentVisible'
-import { Cross1Icon } from '@radix-ui/react-icons'
+import { FaXmark } from 'react-icons/fa6'
 import { useEffect, useRef } from 'react'
 
 export default function CartDrawer() {
@@ -51,12 +50,12 @@ export default function CartDrawer() {
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
-        <button onClick={() => setIsOpen(false)} className='absolute right-5'>
-          <Cross1Icon className='w-5 h-5' />
+        <button onClick={() => setIsOpen(false)} className="absolute right-5">
+          <FaXmark />
         </button>
-        <div className='flex flex-col items-center justify-center h-full'>
-          <h3 className='text-2xl'>Your cart is empty</h3>
-          <button className='p-3 mt-5 text-white transition-colors duration-700 bg-red-500 rounded-lg hover:outline-2 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500'>
+        <div className="flex flex-col items-center justify-center h-full">
+          <h3 className="text-2xl">Your cart is empty</h3>
+          <button className="p-3 mt-5 text-white transition-colors duration-700 bg-red-500 rounded-lg hover:outline-2 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500">
             Continue shopping
           </button>
         </div>

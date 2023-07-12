@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRightIcon, ArrowLeftIcon } from '@radix-ui/react-icons'
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 
 interface PropTypes {
   isVisible: boolean
@@ -42,15 +42,16 @@ export default function MobileNav(props: PropTypes) {
         md:hidden
         transition-transform
         duration-700
+        z-50
         ${props.isVisible ? 'translate-x-0' : '-translate-x-full'}`}
     >
-      <ul className='text-lg text-white pt-14'>
+      <ul className="text-lg text-white pt-14">
         {history.length > 1 && (
           <li
-            className='flex items-center gap-5 px-12 py-3 transition-colors cursor-pointer hover:bg-red-400 moveToLeft'
+            className="flex items-center gap-5 px-12 py-3 transition-colors cursor-pointer hover:bg-red-400 moveToLeft"
             onClick={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
           >
-            <ArrowLeftIcon className='w-5 h-5' />
+            <FaArrowLeft />
             {current.title}
           </li>
         )}
@@ -71,7 +72,7 @@ export default function MobileNav(props: PropTypes) {
             }
           >
             {item.title}
-            {item.children && <ArrowRightIcon className='w-5 h-5' />}
+            {item.children && <FaArrowRight />}
           </li>
         ))}
       </ul>
