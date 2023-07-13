@@ -25,53 +25,55 @@ export default function Header() {
   const { setIsOpen } = useCartDrawerContext()
 
   return (
-    <header
-      ref={ref}
-      className="relative flex justify-between p-5 mx-3 bg-opacity-50 rounded-lg bg-stone-300 md:mx-14"
-    >
-      <button
-        className="inline-flex items-center justify-center w-10 h-10 md:hidden"
-        onClick={() => setIsComponentVisible((prev) => !prev)}
+    <section className="py-5 bg-gradient-to-br from-red-400 to-red-600">
+      <header
+        ref={ref}
+        className="relative flex justify-between p-5 mx-3 bg-opacity-50 rounded-lg bg-stone-300 md:mx-14"
       >
-        {isComponentVisible ? <FaXmark /> : <FaBars />}
-      </button>
-      <Link href="/">
-        <Image src={logo} alt="Logo" width={130} height={50} />
-      </Link>
-
-      <ul className="items-center hidden gap-10 text-sm font-bold text-gray-700 md:flex">
-        {menuItems.map((item) => (
-          <li
-            className="relative p-3 uppercase transition-colors hover:text-red-600 group"
-            key={crypto.randomUUID()}
-          >
-            {item.title}
-            {item.children && (
-              <ul className="absolute invisible p-5 text-white normal-case transition-opacity duration-1000 bg-red-500 rounded-md shadow-md opacity-0 pointer-events-none top-10 group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 hover:visible hover:opacity-100 hover:pointer-events-auto">
-                {item.children.data.map((i) => (
-                  <li
-                    key={crypto.randomUUID()}
-                    className="transition-colors hover:text-gray-700"
-                  >
-                    <Link href={i.path}>{i.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex items-center gap-5">
-        <button onClick={() => setIsOpen(true)}>
-          <FaCartShopping />
+        <button
+          className="inline-flex items-center justify-center w-10 h-10 md:hidden"
+          onClick={() => setIsComponentVisible((prev) => !prev)}
+        >
+          {isComponentVisible ? <FaXmark /> : <FaBars />}
         </button>
-        <Link href="/login">
-          <FaUser />
+        <Link href="/">
+          <Image src={logo} alt="Logo" width={130} height={50} />
         </Link>
-      </div>
-      <MobileNav isVisible={isComponentVisible} menuItems={menuItems} />
-      <CartDrawer />
-    </header>
+
+        <ul className="items-center hidden gap-10 text-sm font-bold text-gray-700 md:flex">
+          {menuItems.map((item) => (
+            <li
+              className="relative p-3 uppercase transition-colors hover:text-red-600 group"
+              key={crypto.randomUUID()}
+            >
+              {item.title}
+              {item.children && (
+                <ul className="absolute invisible p-5 text-white normal-case transition-opacity duration-1000 bg-red-500 rounded-md shadow-md opacity-0 pointer-events-none top-10 group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 hover:visible hover:opacity-100 hover:pointer-events-auto">
+                  {item.children.data.map((i) => (
+                    <li
+                      key={crypto.randomUUID()}
+                      className="transition-colors hover:text-gray-700"
+                    >
+                      <Link href={i.path}>{i.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-5">
+          <button onClick={() => setIsOpen(true)}>
+            <FaCartShopping />
+          </button>
+          <Link href="/login">
+            <FaUser />
+          </Link>
+        </div>
+        <MobileNav isVisible={isComponentVisible} menuItems={menuItems} />
+        <CartDrawer />
+      </header>
+    </section>
   )
 }
