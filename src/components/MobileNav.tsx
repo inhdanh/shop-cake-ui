@@ -24,12 +24,6 @@ export default function MobileNav(props: PropTypes) {
   const [history, setHistory] = useState<History[]>([{ data: props.menuItems }])
   const current = history[history.length - 1]
 
-  useEffect(() => {
-    if (!props.isVisible && props.menuItems) {
-      setHistory([{ data: props.menuItems }])
-    }
-  }, [props.isVisible, props.menuItems])
-
   return (
     <div
       className={`
@@ -43,12 +37,21 @@ export default function MobileNav(props: PropTypes) {
         transition-transform
         duration-700
         z-50
-        ${props.isVisible ? 'translate-x-0' : '-translate-x-full'}`}
+        ${props.isVisible ? 'translate-x-0' : '-translate-x-full'}
+      `}
     >
-      <ul className="text-lg text-white pt-14">
-        {history.length > 1 && (
+      <ul
+        className={`text-lg text-white pt-14 ${
+          history.indexOf(current) > 0
+            ? 'animate-move-to-left'
+            : props.isVisible
+            ? 'animate-move-to-right'
+            : ''
+        }`}
+      >
+        {history.indexOf(current) > 0 && (
           <li
-            className="flex items-center gap-5 px-12 py-3 transition-colors cursor-pointer hover:bg-red-400 moveToLeft"
+            className="flex items-center gap-5 px-12 py-3 transition-colors cursor-pointer hover:bg-red-400"
             onClick={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
           >
             <FaArrowLeft />
@@ -57,9 +60,7 @@ export default function MobileNav(props: PropTypes) {
         )}
         {current.data.map((item) => (
           <li
-            className={`flex items-center justify-between px-12 py-3 transition-colors cursor-pointer hover:bg-red-400 ${
-              history.length > 1 ? 'moveToLeft' : 'moveToRight'
-            }`}
+            className="flex items-center justify-between px-12 py-3 transition-colors cursor-pointer hover:bg-red-400"
             key={crypto.randomUUID()}
             onClick={
               item.children

@@ -1,8 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import footerImg from '@/assets/images/footer.webp'
-import logoImg from '@/assets/images/logo.png'
 import {
   FaLocationDot,
   FaPhone,
@@ -27,8 +25,10 @@ export default function Footer() {
       <div className="overflow-hidden">
         <Image
           className="absolute top-0 left-0 object-cover object-top w-screen h-full -z-10"
-          src={footerImg}
+          src="/img/footer.webp"
           alt="Footer"
+          width={1500}
+          height={50}
         />
       </div>
       <div>
@@ -36,8 +36,10 @@ export default function Footer() {
           <div className="text-center text-white -order-1 md:order-1">
             <Image
               className="object-cover mx-auto mt-5 md:mt-2"
-              src={logoImg}
+              src="/img/logo.png"
               alt="Logo"
+              width={150}
+              height={50}
             />
             <p className="mt-5">
               Tempus quam pellentesque nec nam aliquam sem. Faucibus a

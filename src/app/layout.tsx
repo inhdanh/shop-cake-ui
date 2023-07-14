@@ -1,4 +1,4 @@
-import './globals.css'
+import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Work_Sans } from 'next/font/google'
 import GlobalContextProvider from '../contexts'

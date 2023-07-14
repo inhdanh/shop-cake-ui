@@ -13,6 +13,20 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         footer: "url('/src/assets/images/footer.jpg')",
       },
+      keyframes: {
+        'to-left': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        'to-right': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+      animation: {
+        'move-to-left': 'to-left 0.5s ease-out',
+        'move-to-right': 'to-right 0.5s ease-out',
+      },
     },
   },
   plugins: [],

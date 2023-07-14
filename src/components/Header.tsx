@@ -3,7 +3,6 @@ import MobileNav from '@/components/MobileNav'
 import useComponentVisible from '@/hooks/useComponentVisible'
 import { FaBars, FaXmark, FaCartShopping, FaUser } from 'react-icons/fa6'
 import Image from 'next/image'
-import logo from '@/assets/images/logo.png'
 import Link from 'next/link'
 import CartDrawer from './CartDrawer'
 import { useCartDrawerContext } from '@/contexts/cartDrawer'
@@ -37,7 +36,7 @@ export default function Header() {
           {isComponentVisible ? <FaXmark /> : <FaBars />}
         </button>
         <Link href="/">
-          <Image src={logo} alt="Logo" width={130} height={50} />
+          <Image src="/img/logo.png" alt="Logo" width={130} height={50} />
         </Link>
 
         <ul className="items-center hidden gap-10 text-sm font-bold text-gray-700 md:flex">

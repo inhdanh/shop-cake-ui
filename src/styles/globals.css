@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'animation.css';
-
 @layer components {
   .form-input {
     @apply px-5 py-2 transition-colors border border-black rounded-lg outline-none placeholder:top-[10px] focus:placeholder:-translate-x-1/2 focus:border-red-500 placeholder:absolute focus:placeholder:-translate-y-4 focus:placeholder:scale-0 placeholder:transition-transform placeholder:duration-500;
@@ -11,5 +9,16 @@
 
   .primary-btn {
     @apply break-keep	min-w-[136px] px-5 py-3 transition-colors duration-500 bg-gray-100 border-2 border-gray-600 rounded-xl hover:bg-white hover:text-red-500 hover:border-red-500;
+  }
+
+  .mask-img {
+    mask-image: url(/img/Component_26_1.png);
+    mask-repeat: no-repeat;
+    -webkit-mask-image: url(/img/Component_26_1.png);
+    -webkit-mask-repeat: no-repeat;
+  }
+
+  .support-block-card {
+    @apply relative flex items-center justify-center w-40 h-40 mx-auto before:top-3 before:right-2 before:duration-500 before:transition-colors hover:before:bg-red-500 before:-z-10 before:absolute before:mask-img before:bg-red-300 before:w-full before:h-full before:bg-opacity-25;
   }
 }
