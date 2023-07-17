@@ -61,7 +61,7 @@ export default function MobileNav(props: PropTypes) {
         {current.data.map((item) => (
           <li
             className="flex items-center justify-between px-12 py-3 transition-colors cursor-pointer hover:bg-red-400"
-            key={crypto.randomUUID()}
+            key={Math.random()}
             onClick={
               item.children
                 ? () =>

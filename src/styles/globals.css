@@ -4,7 +4,7 @@
 
 @layer components {
   .form-input {
-    @apply px-5 py-2 transition-colors border border-black rounded-lg outline-none placeholder:top-[10px] focus:placeholder:-translate-x-1/2 focus:border-red-500 placeholder:absolute focus:placeholder:-translate-y-4 focus:placeholder:scale-0 placeholder:transition-transform placeholder:duration-500;
+    @apply relative px-5 py-2 transition-colors border border-black rounded-lg outline-none placeholder:top-[10px] focus:placeholder:-translate-x-1/2 focus:border-red-500 placeholder:absolute focus:placeholder:-translate-y-4 focus:placeholder:scale-0 placeholder:transition-transform placeholder:duration-500;
   }
 
   .primary-btn {

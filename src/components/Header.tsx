@@ -43,14 +43,14 @@ export default function Header() {
           {menuItems.map((item) => (
             <li
               className="relative p-3 uppercase transition-colors hover:text-red-600 group"
-              key={crypto.randomUUID()}
+              key={Math.random()}
             >
               {item.title}
               {item.children && (
                 <ul className="absolute invisible p-5 text-white normal-case transition-opacity duration-1000 bg-red-500 rounded-md shadow-md opacity-0 pointer-events-none top-10 group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 hover:visible hover:opacity-100 hover:pointer-events-auto">
                   {item.children.data.map((i) => (
                     <li
-                      key={crypto.randomUUID()}
+                      key={Math.random()}
                       className="transition-colors hover:text-gray-700"
                     >
                       <Link href={i.path}>{i.title}</Link>

@@ -7,6 +7,10 @@ export default function CartDrawer() {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (typeof setIsOpen !== 'function') {
+      return
+    }
+
     const handleClickOutside = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
         setIsOpen(false)
@@ -18,7 +22,12 @@ export default function CartDrawer() {
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [])
+  }, [setIsOpen])
+
+  useEffect(() => {
+    const bodyPosition = isOpen ? 'fixed' : ''
+    document.body.style.position = bodyPosition
+  }, [isOpen])
 
   return (
     <div
