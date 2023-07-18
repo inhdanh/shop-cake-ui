@@ -32,7 +32,7 @@ export default function Home() {
         <h3 className="text-sm font-medium tracking-widest text-red-500 uppercase">
           Our collections
         </h3>
-        <h2 className="my-3 text-3xl font-semibold">
+        <h2 className="my-3 text-3xl font-medium">
           Unique & Hygienic Homemade Cakes
         </h2>
         <p className="leading-7">
@@ -55,10 +55,10 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{card.title}</h3>
+                    <h3 className="font-medium">{card.title}</h3>
                     <p className="mt-2 leading-7">{card.description}</p>
                     <Link
-                      className="block mt-5 font-semibold underline transition-colors duration-500 hover:text-red-500"
+                      className="block mt-5 font-medium underline transition-colors duration-500 hover:text-red-500"
                       href="#"
                     >
                       Shop Now
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
       <section className="relative">
         <div className="bg-[url('/img/Component_27_1.png')] bg-red-400 bg-no-repeat bg-cover w-full overflow-hidden">
-          <ul className="flex font-semibold text-white w-max animate-marquee">
+          <ul className="flex font-medium text-white w-max animate-marquee">
             <li className="w-screen py-10 text-right">
               <Link
                 className="
@@ -115,7 +115,7 @@ export default function Home() {
           <h3 className="text-sm font-medium tracking-widest text-red-500 uppercase">
             YUMMY CAKES
           </h3>
-          <h2 className="my-3 text-3xl font-semibold">Our Special Cakes </h2>
+          <h2 className="my-3 text-3xl font-medium">Our Special Cakes </h2>
           <p className="leading-7">
             Pellentesque adipiscing commodo elit at. Malesuada fames ac turpis
             egestas maecenas pharetra. Dolor magna eget est lorem ipsum dolor
@@ -125,6 +125,33 @@ export default function Home() {
       </section>
 
       <Slider />
+
+      <section className="p-10">
+        <Image
+          width={750}
+          height={703}
+          src="/img/Component_139_1.webp"
+          alt="Designer cake"
+        />
+        <h3 className="text-sm font-medium tracking-widest text-red-500 uppercase">
+          Designer cake
+        </h3>
+        <h2 className="mb-3 text-3xl font-medium">Creamy Nuts Vanilla Cake</h2>
+        <p className="leading-7">
+          Bibendum enim facilisis gravida neque convallis a cras semper. Pretium
+          fusce id velit ut tortor pretium viverra suspendisse. Ut diam quam
+          nulla porttitor. Viverra ipsum nunc aliquet bibendum enim facilisis
+          gravida neque convallis.
+        </p>
+        <div className="mt-16 mb-8">
+          <Link
+            href="#"
+            className="block py-5 text-center border-2 border-red-500 rounded-3xl w-60 hoverbefore:bg-[url('/img/AdobeStock_217277933.jpg')] bg-red-500"
+          >
+            Soft Baked Product
+          </Link>
+        </div>
+      </section>
     </>
   )
 }

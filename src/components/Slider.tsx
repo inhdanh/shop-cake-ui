@@ -67,14 +67,14 @@ export default function Slider() {
     <div className="mt-8">
       <ul
         ref={sliderRef}
-        className="flex overflow-hidden scroll-smooth snap-x snap-mandatory"
+        className="flex gap-3 overflow-x-hidden scroll-smooth snap-x snap-mandatory"
       >
         {sliderItems.map((item) => (
           <li
             key={item.name}
-            className="relative w-full snap-start shrink-0 group"
+            className="relative w-full sm:w-[calc(50%-6px)] md:w-[calc(33%-6px)] lg:w-[calc(20%-6px)] snap-start shrink-0 group"
           >
-            <div className="relative w-full h-full rounded-3xl before:absolute before:left-0 before:top-0 before:bg-gradient-radial before:w-full before:h-full before:transition-all group-hover:before:bg-red-600 group-hover:before:bg-none group-hover:before:bg-opacity-70 before:duration-1000">
+            <div className="relative w-full h-full overflow-hidden rounded-3xl before:absolute before:left-0 before:top-0 before:bg-gradient-radial before:w-full before:h-full before:transition-all group-hover:before:bg-red-600 group-hover:before:bg-none group-hover:before:bg-opacity-70 before:duration-1000 before:z-10">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -83,13 +83,16 @@ export default function Slider() {
                 className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-125"
               />
             </div>
-            <h3 className="absolute z-10 text-2xl font-medium text-white bottom-5 left-5">
+            <h3 className="absolute z-10 text-2xl font-medium text-white transition-opacity duration-500 md:text-xl bottom-5 left-5 group-hover:opacity-0">
               {item.name}
             </h3>
-            <div className="absolute text-center text-white -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-              <h3 className="mb-4 text-2xl">{item.name}</h3>
+            <div className="absolute z-10 text-center text-white transition-opacity duration-500 -translate-x-1/2 -translate-y-1/2 opacity-0 left-1/2 top-1/2 group-hover:opacity-100">
+              <h3 className="mb-4 text-2xl md:text-xl">{item.name}</h3>
               <p className="mb-4">{item.description}</p>
-              <Link href="#" className="font-semibold underline">
+              <Link
+                href="#"
+                className="font-semibold underline transition-colors duration-500 hover:text-black"
+              >
                 Shop Now
               </Link>
             </div>
