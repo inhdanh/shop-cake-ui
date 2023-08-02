@@ -1,6 +1,7 @@
 import Slider from '@/components/Slider'
 import Image from 'next/image'
 import Link from 'next/link'
+import { AiOutlineCaretRight } from 'react-icons/ai'
 
 const blockCards = [
   {
@@ -126,31 +127,87 @@ export default function Home() {
 
       <Slider />
 
-      <section className="p-10">
+      <section className="p-10 md:grid md:grid-cols-2">
         <Image
           width={750}
           height={703}
           src="/img/Component_139_1.webp"
           alt="Designer cake"
+          className="object-contain w-full h-full"
         />
-        <h3 className="text-sm font-medium tracking-widest text-red-500 uppercase">
-          Designer cake
-        </h3>
-        <h2 className="mb-3 text-3xl font-medium">Creamy Nuts Vanilla Cake</h2>
-        <p className="leading-7">
-          Bibendum enim facilisis gravida neque convallis a cras semper. Pretium
-          fusce id velit ut tortor pretium viverra suspendisse. Ut diam quam
-          nulla porttitor. Viverra ipsum nunc aliquet bibendum enim facilisis
-          gravida neque convallis.
-        </p>
-        <div className="mt-16 mb-8">
-          <Link
-            href="#"
-            className="block py-5 text-center border-2 border-red-500 rounded-3xl w-60 hoverbefore:bg-[url('/img/AdobeStock_217277933.jpg')] bg-red-500"
-          >
-            Soft Baked Product
-          </Link>
+        <div>
+          <h3 className="text-sm font-semibold tracking-widest text-red-500 uppercase">
+            Designer cake
+          </h3>
+          <h2 className="mb-3 text-3xl font-medium">
+            Creamy Nuts Vanilla Cake
+          </h2>
+          <p className="leading-7">
+            Bibendum enim facilisis gravida neque convallis a cras semper.
+            Pretium fusce id velit ut tortor pretium viverra suspendisse. Ut
+            diam quam nulla porttitor. Viverra ipsum nunc aliquet bibendum enim
+            facilisis gravida neque convallis.
+          </p>
+          <div className="grid w-1/2 grid-cols-1 gap-5 mt-16 mb-8">
+            <Link
+              href="#"
+              className="relative block w-full py-5 font-bold text-center text-red-500 border-2 border-red-500 rounded-[28px] hover:bg-opacity-70 group hover:text-white hover:bg-red-500"
+            >
+              <div className="group-hover:bg-[url('/img/bg-btn-0.jpg')] w-full h-full absolute rounded-3xl top-0 bg-no-repeat bg-cover bg-center -z-10"></div>
+              Soft Baked Product
+            </Link>
+            <Link
+              href="#"
+              className="relative block w-full py-5 font-bold text-center text-red-500 border-2 border-red-500 rounded-[28px] hover:bg-opacity-70 group hover:text-white hover:bg-red-500"
+            >
+              <div className="group-hover:bg-[url('/img/bg-btn-0.jpg')] w-full h-full absolute rounded-3xl top-0 bg-no-repeat bg-cover -z-10 bg-center"></div>
+              Fully Weat Product
+            </Link>
+            <Link
+              href="#"
+              className="relative block w-full py-5 font-bold text-center text-red-500 border-2 border-red-500 rounded-[28px] hover:bg-opacity-70 group hover:text-white hover:bg-red-500"
+            >
+              <div className="group-hover:bg-[url('/img/bg-btn-0.jpg')] w-full h-full absolute rounded-3xl top-0 bg-no-repeat bg-cover -z-10 bg-center"></div>
+              Soft Baked Product
+            </Link>
+          </div>
+          <button className="flex items-center gap-1 px-10 py-4 text-sm font-bold text-white transition-colors duration-500 bg-red-500 border-2 border-white rounded-2xl hover:text-red-500 hover:bg-white hover:border-red-500">
+            Shop Now <AiOutlineCaretRight size={23} />
+          </button>
         </div>
+      </section>
+
+      <section>
+        <div className="bg-[url('/img/banner01.jpg')] w-full h-[415px] bg-center bg-no-repeat bg-cover md:px-52 md:py-20 md:h-[650px]">
+          <div className="grid h-full px-8 py-12 font-semibold text-center text-white bg-red-500 bg-opacity-60 md:bg-opacity-90">
+            <h4 className="tracking-widest uppercase">creative cakes</h4>
+            <h2 className="text-3xl">Get Best Offers On Pastry Cakes</h2>
+            <p>
+              Vestibulum lorem sed risus ultricies tristique nulla aliquet enim.
+              Lacus viverra vitae congue eu consequat ac felis donec. Semper
+              feugiat nibh sed pulvinar proin gravida hendrerit lectus. Lobortis
+              mattis aliquam faucibus purus in massa tempor.
+            </p>
+            <div>
+              <button className="py-2 text-red-500 transition-colors duration-500 bg-white border-2 border-red-500 px-7 rounded-xl hover:bg-red-500 hover:text-white hover:border-white">
+                Shop Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 text-center">
+        <h3 className="text-sm font-semibold tracking-widest text-red-500 uppercase">
+          best selling cakes
+        </h3>
+        <h2 className="mb-3 text-3xl font-medium">Shop By Delicious Flavour</h2>
+        <p className="leading-7">
+          Commodo ullamcorper a lacus vestibulum sed arcu non. Cursus in hac
+          habitasse platea dictumst. Odio tempor orci dapibus ultrices in
+          iaculis nunc sed. Quam viverra orci sagittis eu volutpat odio
+          facilisis.
+        </p>
       </section>
     </>
   )
