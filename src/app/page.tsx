@@ -1,3 +1,4 @@
+import ProductCart from '@/components/ProductCard'
 import Slider from '@/components/Slider'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,6 +24,44 @@ const blockCards = [
     img: '/img/flavoured-cupcakes.avif',
     title: 'Flavoured Cupcakes',
     description: 'Odio morbi quis commodo odio aenean in iaculis nunc sed.',
+  },
+]
+
+const productCards = [
+  {
+    img: '/img/products/shop10.jpg',
+    title: 'Chocolate Filling Donut Cake',
+    price: 10,
+  },
+  {
+    img: '/img/products/shop03.jpg',
+    title: 'Fudge Filling Creamy Vanilla Cake',
+    price: 13,
+  },
+  {
+    img: '/img/products/shop17.jpg',
+    title: 'Chocolate Filling Donut Cake',
+    price: 18,
+  },
+  {
+    img: '/img/products/shop04.jpg',
+    title: 'Strawberry Nuts Mousse Cake',
+    price: 15,
+  },
+  {
+    img: '/img/products/shop11.jpg',
+    title: 'Raspberry Velvet Fruit Fudge Cake',
+    price: 55,
+  },
+  {
+    img: '/img/products/shop16.jpg',
+    title: 'Vanilla Flavoure Berry Fruit Cake',
+    price: 80,
+  },
+  {
+    img: '/img/products/shop09.jpg',
+    title: 'Red Velvet Ice Cream Cherry Cake',
+    price: 20,
   },
 ]
 
@@ -148,7 +187,7 @@ export default function Home() {
             diam quam nulla porttitor. Viverra ipsum nunc aliquet bibendum enim
             facilisis gravida neque convallis.
           </p>
-          <div className="grid w-1/2 grid-cols-1 gap-5 mt-16 mb-8">
+          <div className="grid w-2/3 grid-cols-1 gap-5 mt-16 mb-8">
             <Link
               href="#"
               className="relative block w-full py-5 font-bold text-center text-red-500 border-2 border-red-500 rounded-[28px] hover:bg-opacity-70 group hover:text-white hover:bg-red-500"
@@ -207,6 +246,53 @@ export default function Home() {
           habitasse platea dictumst. Odio tempor orci dapibus ultrices in
           iaculis nunc sed. Quam viverra orci sagittis eu volutpat odio
           facilisis.
+        </p>
+        <div className="grid grid-cols-1 gap-3 mx-5 my-5 md:grid-cols-2 lg:grid-cols-4">
+          {productCards.map((card, index) => (
+            <ProductCart
+              key={index}
+              image={card.img}
+              title={card.title}
+              price={card.price}
+            />
+          ))}
+        </div>
+        <button className="px-8 py-2 text-sm font-medium text-white transition-colors bg-red-500 border-2 border-red-500 rounded-lg hover:bg-white hover:text-red-500">
+          View all
+        </button>
+      </section>
+
+      <section>
+        <div className="bg-[url('/img/bg_1.webp')] w-full h-max bg-center bg-no-repeat bg-cover">
+          <div className="grid h-full gap-5 px-8 py-12 font-semibold text-center text-white md:text-left md:w-2/3">
+            <h4 className="tracking-widest uppercase">CELEBRATION CAKES</h4>
+            <h2 className="text-3xl">
+              Your Celebration Cannot Be Complete Without Cupcakes
+            </h2>
+            <p>
+              Rhoncus est diam quam nulla porttitor pellentesque elit
+              ullamcorper dignissim cras tincidunt. Sed felis eget velit
+              aliquet. Pulvinar pellentesque habitant morbi tristique senectus.
+            </p>
+            <div>
+              <button className="py-2 text-red-500 transition-colors duration-500 bg-white border-2 border-red-500 px-7 rounded-xl hover:bg-red-500 hover:text-white hover:border-white">
+                Shop Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 text-center">
+        <h3 className="text-sm font-semibold tracking-widest text-red-500 uppercase">
+          OUR RECENT UPDATIONS
+        </h3>
+        <h2 className="mb-3 text-3xl font-medium">Delicious Cake Posts</h2>
+        <p className="leading-7">
+          Ut faucibus pulvinar elementum integer enim neque volutpat. Id semper
+          risus in hendrerit gravida rutrum. Laoreet id donec ultrices
+          tincidunt. Purus faucibus ornare suspendisse sed nisi lacus sed
+          viverra tellus.
         </p>
       </section>
     </>
