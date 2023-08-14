@@ -49,12 +49,12 @@ export default function CartDrawer() {
         className={`
           relative
           ml-auto
-          h-full 
-          p-5 
+          h-full
+          p-5
           bg-white
           transition-transform
           duration-300
-          md:w-[40rem] 
+          md:w-[40rem]
           w-[20rem]
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}

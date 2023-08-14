@@ -65,6 +65,30 @@ const productCards = [
   },
 ]
 
+const cakePosts = [
+  {
+    image: '/img/blog-12.webp',
+    date: 'Dec 12',
+    title: 'Special Cakes Are Always Ready For Special People',
+    description:
+      'Fringilla ut feugiat ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet,...',
+  },
+  {
+    image: '/img/blog-1.webp',
+    date: 'Dec 12',
+    title: 'A Delicious Cake Spread Luscious Happiness Ever...',
+    description:
+      'Venenatis cras feugiat ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit...',
+  },
+  {
+    image: '/img/blog-2.webp',
+    date: 'Dec 03',
+    title: 'Find Good And Healthy Ingredients For Making Re...',
+    description:
+      'Ac auctor feugiat ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit...',
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -283,9 +307,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 text-center">
+      <section className="pt-16 text-center">
         <h3 className="text-sm font-semibold tracking-widest text-red-500 uppercase">
-          OUR RECENT UPDATIONS
+          our recent updations
         </h3>
         <h2 className="mb-3 text-3xl font-medium">Delicious Cake Posts</h2>
         <p className="leading-7">
@@ -294,6 +318,53 @@ export default function Home() {
           tincidunt. Purus faucibus ornare suspendisse sed nisi lacus sed
           viverra tellus.
         </p>
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {cakePosts.map((cakePost) => (
+            <div key={cakePost.title} className="px-5 mt-10 text-left ">
+              <div className="relative overflow-hidden rounded-3xl ">
+                <Image
+                  alt={cakePost.title}
+                  src={cakePost.image}
+                  width={720}
+                  height={444}
+                />
+                <div className="absolute bottom-0 right-0 px-10 py-3 font-semibold text-white bg-red-500 rounded-tl-3xl">
+                  {cakePost.date}
+                </div>
+              </div>
+              <Link
+                className="block mt-10 mb-5 text-2xl font-semibold transition-colors hover:text-red-500"
+                href="/"
+              >
+                {cakePost.title}
+              </Link>
+              <p className="leading-7">{cakePost.description}</p>
+              <Link
+                className="block mt-4 mb-12 text-sm font-semibold text-red-500 underline transition-colors underline-offset-2 hover:text-black"
+                href="#"
+              >
+                Read More
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-16 text-center">
+        <h3 className="text-sm font-semibold tracking-widest text-red-500 uppercase">
+          JOIN OUR SOCIAL CIRCLE
+        </h3>
+        <h2 className="mb-3 text-3xl font-medium">@yourinstagram</h2>
+        <p>
+          Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis
+          rhoncus nisl condimentum id venenatis a.
+        </p>
+        <Link
+          className="block mt-4 mb-12 underline transition-colors font-semibol underline-offset-2 hover:text-red-500"
+          href="#"
+        >
+          Button label
+        </Link>
       </section>
     </>
   )
