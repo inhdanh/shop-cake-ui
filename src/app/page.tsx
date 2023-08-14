@@ -1,5 +1,9 @@
+'use client'
+
+import services from '@/api/services'
 import ProductCart from '@/components/ProductCard'
 import Slider from '@/components/Slider'
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineCaretRight } from 'react-icons/ai'
@@ -90,6 +94,17 @@ const cakePosts = [
 ]
 
 export default function Home() {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => services.getProductList({}),
+  })
+
+  console.log('products', data?.data.data)
+  const products = data?.data.data.data as Product[]
+  console.log('products', products)
+
+  if (isLoading) return <div>Loading...</div>
+
   return (
     <>
       <section className="px-4 py-20 text-center">
@@ -106,21 +121,21 @@ export default function Home() {
         </p>
         <div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-            {blockCards.map((card) => (
+            {products.map((product) => (
               <li key={Math.random()}>
                 <div className="p-4">
-                  <div className="support-block-card">
+                  <div className="support-block-product">
                     <Image
-                      src={card.img}
-                      alt={card.title}
+                      src={product.image}
+                      alt={product.name}
                       className="w-14 h-14"
                       width={50}
                       height={50}
                     />
                   </div>
                   <div>
-                    <h3 className="font-medium">{card.title}</h3>
-                    <p className="mt-2 leading-7">{card.description}</p>
+                    <h3 className="font-medium">{product.name}</h3>
+                    <p className="mt-2 leading-7">{product.description}</p>
                     <Link
                       className="block mt-5 font-medium underline transition-colors duration-500 hover:text-red-500"
                       href="#"

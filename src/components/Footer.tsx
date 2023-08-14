@@ -21,26 +21,28 @@ export default function Footer() {
   const [emailAddress, setEmailAddress] = useState('')
 
   return (
-    <footer className="relative text-base">
+    <footer className="relative text-base bg-[url('/img/footer.webp')] bg-no-repeat bg-cover bg-center">
       <div className="overflow-hidden">
-        <Image
+        {/* <Image
           className="absolute top-0 left-0 object-cover object-top w-screen h-full -z-10"
           src="/img/footer.webp"
           alt="Footer"
           width={1500}
           height={50}
-        />
+        /> */}
       </div>
       <div>
         <div className="relative p-8 mt-12">
           <div className="text-center text-white -order-1 md:order-1">
-            <Image
-              className="object-cover mx-auto mt-5 md:mt-2"
-              src="/img/logo.png"
-              alt="Logo"
-              width={150}
-              height={50}
-            />
+            <div className="w-32 mx-auto">
+              <Image
+                className="object-cover w-auto h-auto mx-auto mt-5 md:mt-2"
+                src="/img/logo.png"
+                alt="Logo"
+                width={150}
+                height={50}
+              />
+            </div>
             <p className="mt-5">
               Tempus quam pellentesque nec nam aliquam sem. Faucibus a
               pellentesque sit amet porttitor.

@@ -1,7 +1,8 @@
 'use client'
 import MobileNav from '@/components/MobileNav'
 import useComponentVisible from '@/hooks/useComponentVisible'
-import { FaBars, FaXmark, FaCartShopping, FaUser } from 'react-icons/fa6'
+import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai'
+import { FaBars, FaXmark } from 'react-icons/fa6'
 import Image from 'next/image'
 import Link from 'next/link'
 import CartDrawer from './CartDrawer'
@@ -22,21 +23,28 @@ export default function Header() {
   const { isComponentVisible, ref, setIsComponentVisible } =
     useComponentVisible(false)
   const { setIsOpen } = useCartDrawerContext()
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 
   return (
     <section className="py-5 bg-gradient-to-br from-red-400 to-red-600">
       <header
         ref={ref}
-        className="relative flex justify-between p-5 mx-3 bg-opacity-50 rounded-lg bg-stone-300 md:mx-14"
+        className="relative flex items-center justify-between p-5 mx-3 bg-opacity-50 rounded-lg bg-stone-300 md:mx-14"
       >
         <button
           className="inline-flex items-center justify-center w-10 h-10 md:hidden"
           onClick={() => setIsComponentVisible((prev) => !prev)}
         >
-          {isComponentVisible ? <FaXmark /> : <FaBars />}
+          {isComponentVisible ? <FaXmark size={24} /> : <FaBars size={24} />}
         </button>
-        <Link href="/">
-          <Image src="/img/logo.png" alt="Logo" width={130} height={50} />
+        <Link href="/" className="block w-32">
+          <Image
+            src="/img/logo.png"
+            alt="Logo"
+            width={130}
+            height={50}
+            className="w-auto h-auto"
+          />
         </Link>
 
         <ul className="items-center hidden gap-10 text-sm font-bold text-gray-700 md:flex">
@@ -64,10 +72,10 @@ export default function Header() {
 
         <div className="flex items-center gap-5">
           <button onClick={() => setIsOpen(true)}>
-            <FaCartShopping />
+            <AiOutlineShopping size={24} />
           </button>
           <Link href="/login">
-            <FaUser />
+            <AiOutlineUser size={24} />
           </Link>
         </div>
         <MobileNav isVisible={isComponentVisible} menuItems={menuItems} />
