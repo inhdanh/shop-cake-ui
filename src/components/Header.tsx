@@ -23,7 +23,6 @@ export default function Header() {
   const { isComponentVisible, ref, setIsComponentVisible } =
     useComponentVisible(false)
   const { setIsOpen } = useCartDrawerContext()
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 
   return (
     <section className="py-5 bg-gradient-to-br from-red-400 to-red-600">

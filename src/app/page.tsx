@@ -1,6 +1,7 @@
 'use client'
 
 import services from '@/api/services'
+import Loading from '@/components/Loading'
 import ProductCart from '@/components/ProductCard'
 import Slider from '@/components/Slider'
 import { useQuery } from '@tanstack/react-query'
@@ -95,15 +96,19 @@ const cakePosts = [
 
 export default function Home() {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['products'],
-    queryFn: () => services.getProductList({}),
+    queryKey: ['cakes'],
+    queryFn: async () => {
+      const res = await services.getProductList()
+      return res.data.data
+    },
   })
 
-  console.log('products', data?.data.data)
-  const products = data?.data.data.data as Product[]
-  console.log('products', products)
-
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loading />
+      </div>
+    )
 
   return (
     <>
@@ -121,21 +126,21 @@ export default function Home() {
         </p>
         <div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-            {products.map((product) => (
+            {blockCards.map((card) => (
               <li key={Math.random()}>
                 <div className="p-4">
-                  <div className="support-block-product">
+                  <div className="support-block-card">
                     <Image
-                      src={product.image}
-                      alt={product.name}
+                      src={card.img}
+                      alt={card.title}
                       className="w-14 h-14"
                       width={50}
                       height={50}
                     />
                   </div>
                   <div>
-                    <h3 className="font-medium">{product.name}</h3>
-                    <p className="mt-2 leading-7">{product.description}</p>
+                    <h3 className="font-medium">{card.title}</h3>
+                    <p className="mt-2 leading-7">{card.description}</p>
                     <Link
                       className="block mt-5 font-medium underline transition-colors duration-500 hover:text-red-500"
                       href="#"
@@ -149,6 +154,7 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
       <section className="relative">
         <div className="bg-[url('/img/Component_27_1.png')] bg-red-400 bg-no-repeat bg-cover w-full overflow-hidden">
           <ul className="flex font-medium text-white w-max animate-marquee">
@@ -201,9 +207,8 @@ export default function Home() {
             sit amet consectetur. Varius sit amet mattis vulputate enim nulla.
           </p>
         </div>
+        <Slider items={data} />
       </section>
-
-      <Slider />
 
       <section className="p-10 md:grid md:grid-cols-2">
         <Image
@@ -255,7 +260,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section className="mt-5">
         <div className="bg-[url('/img/banner01.jpg')] w-full h-[415px] bg-center bg-no-repeat bg-cover md:px-52 md:py-20 md:h-[650px]">
           <div className="grid h-full px-8 py-12 font-semibold text-center text-white bg-red-500 bg-opacity-60 md:bg-opacity-90">
             <h4 className="tracking-widest uppercase">creative cakes</h4>
@@ -287,11 +292,11 @@ export default function Home() {
           facilisis.
         </p>
         <div className="grid grid-cols-1 gap-3 mx-5 my-5 md:grid-cols-2 lg:grid-cols-4">
-          {productCards.map((card, index) => (
+          {data.map((card: Product) => (
             <ProductCart
-              key={index}
-              image={card.img}
-              title={card.title}
+              key={card._id}
+              image={card.image}
+              title={card.name}
               price={card.price}
             />
           ))}

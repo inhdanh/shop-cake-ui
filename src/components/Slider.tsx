@@ -2,47 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
-export default function Slider() {
-  const sliderItems = [
-    {
-      name: 'Dark Chocolate Cakes',
-      image: '/img/sliders/grid01.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'Nuts Filled Cupcakes',
-      image: '/img/sliders/grid02.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'Sandwich Cakes',
-      image: '/img/sliders/grid03.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'Mint Brownie Cakes',
-      image: '/img/sliders/grid04.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'No Egg Cakes',
-      image: '/img/sliders/grid05.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'Fruit Cakes',
-      image: '/img/sliders/grid06.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-    {
-      name: 'Choco Velvet Cakes',
-      image: '/img/sliders/grid07.jpg',
-      description: 'Diam phasellus vestibulum lorem sed risus ultricies.',
-    },
-  ]
+export default function Slider({ items }: { items: Product[] }) {
   const sliderRef = useRef(null)
 
   const slide = (direction: 'prev' | 'next') => {
@@ -53,9 +16,6 @@ export default function Slider() {
     }
 
     const { scrollLeft, clientWidth } = sliderElm
-
-    console.log('scrollLeft', scrollLeft)
-    console.log('clientWidth', clientWidth)
 
     const left =
       direction === 'prev' ? scrollLeft - clientWidth : scrollLeft + clientWidth
@@ -69,12 +29,12 @@ export default function Slider() {
         ref={sliderRef}
         className="flex gap-3 overflow-x-hidden scroll-smooth snap-x snap-mandatory"
       >
-        {sliderItems.map((item) => (
+        {items.map((item) => (
           <li
             key={item.name}
             className="relative w-full sm:w-[calc(50%-6px)] md:w-[calc(33%-6px)] lg:w-[calc(20%-6px)] snap-start shrink-0 group"
           >
-            <div className="relative w-full h-full overflow-hidden rounded-3xl before:absolute before:left-0 before:top-0 before:bg-gradient-radial before:w-full before:h-full before:transition-all group-hover:before:bg-red-600 group-hover:before:bg-none group-hover:before:bg-opacity-70 before:duration-1000 before:z-10">
+            <div className="relative w-full h-32 overflow-hidden rounded-3xl before:absolute before:left-0 before:top-0 before:bg-gradient-radial before:w-full before:h-full before:transition-all group-hover:before:bg-red-600 group-hover:before:bg-none group-hover:before:bg-opacity-70 before:duration-1000 before:z-10">
               <Image
                 src={item.image}
                 alt={item.name}
